@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "cs/GmNa1VB2lORL47UgdCwEQzfj1RLxaWUUlYwSZawA3taS1/nPBnQS/lGw1U+nsPuFJlXGMs/ZjTppPpL3n2Q==",
+  "success": true,
+  "projectFilePath": "/Users/kilton/projects/test-projects/Teknologjia.NET/ConsoleApp.5/ConsoleApp.5.csproj",
+  "expectedPackageFiles": [
+    "/Users/kilton/.nuget/packages/microsoft.aspnetcore.app.ref/5.0.0/microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "/Users/kilton/.nuget/packages/microsoft.netcore.app.host.osx-x64/5.0.17/microsoft.netcore.app.host.osx-x64.5.0.17.nupkg.sha512",
+    "/Users/kilton/.nuget/packages/microsoft.netcore.app.ref/5.0.0/microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

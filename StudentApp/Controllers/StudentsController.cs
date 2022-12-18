@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StudentApp.Data.Models;
+using StudentApp.Data.VM;
 
 namespace StudentApp.Controllers
 {
@@ -62,7 +63,53 @@ namespace StudentApp.Controllers
             return Ok(student);
         }
 
-        
+        [HttpPost]
+        public IActionResult AddStudent([FromBody] StudentVM studentVM)
+        {
+            //Krijohet objekti student
+            var student = new Student()
+            {
+                FirstName = studentVM.FirstName,
+                LastName = studentVM.LastName,
+                GraduationYear = studentVM.GraduationYear,
+                DateOfBirth = studentVM.DateOfBirth,
+
+                IsActive = true,
+                DateCreated = DateTime.UtcNow,
+                DateUpdated = null
+            };
+
+            //Objekti i krijuar shtohet ne databaze me Entity Framework
+            return Created("", student);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateStudent([FromBody] StudentVM studentVM, int id)
+        {
+            //Merret objekti Student nga database duket perdorur Id si parameter
+            var student = new Student()
+            {
+                Id = id,
+                FirstName = "John",
+                LastName = "Doe",
+                GraduationYear = 2023,
+                IsActive = true,
+                DateOfBirth = DateTime.Now.AddYears(-20)
+            };
+
+            //Modifikohet objekti Student i marre nga databaza duket perdorur te dhenat nga FromBody
+            student.FirstName = studentVM.FirstName;
+            student.LastName = studentVM.LastName;
+            student.GraduationYear = studentVM.GraduationYear;
+            student.IsActive = studentVM.IsActive;
+            student.DateOfBirth = studentVM.DateOfBirth;
+            student.DateUpdated = DateTime.UtcNow;
+
+            //Perditesohet objekti student ne database me Entity Framework
+
+            return Ok($"Student with id={id} was updated");
+        }
+
         [HttpDelete("{id}")]
         public IActionResult DeleteById(int id)
         {
